@@ -8,7 +8,7 @@
       src="https://kit.fontawesome.com/d8f052c6cf.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script defer src="index.js"></script>
   </head>
   <body>
     <!-- Container for entire form. -->
@@ -20,10 +20,24 @@
 
         <!-- Registration Form -->
         <form id="registration">
-          <input name="username" type="text" placeholder="Username" />
+          <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            required
+            minlength="4"
+            pattern="^(?=.*(.)(?!\1))([a-zA-Z0-9]+)$"
+            title="Username must contain at least 2 unique characters and can't have and spaces or symbols"
+          />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
-          <input name="email" type="text" placeholder="Email" />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            title="Emails from example.com are not allowed."
+          />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
@@ -54,7 +68,7 @@
         <p>Login using your account information.</p>
 
         <!-- Login Form -->
-        <form id="login" style="border-bottom: 1px solid lightgray;">
+        <form id="login" style="border-bottom: 1px solid lightgray">
           <input name="username" type="text" placeholder="Username" />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
