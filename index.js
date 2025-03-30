@@ -1,9 +1,9 @@
-let emailInput = document.getElementById("email");
+let regForm = document.getElementById('registration')
+let regEmail = document.getElementById('email')
 
-emailInput.addEventListener("submit", handleRegistrationForm);
+// regForm.addEventListener('submit', handleRegForm)
 
-function handleRegistrationForm(event) {
-  if (emailInput.endsWith("@example.com")) {
-    event.preventDefault();
-  }
-}
+// function regForm(e) {
+//     if (regEmail.endwWith) { }
+
+// }

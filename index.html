@@ -27,15 +27,16 @@
             required
             minlength="4"
             pattern="^(?=.*(.)(?!\1))([a-zA-Z0-9]+)$"
-            title="Username must contain at least 2 unique characters and can't have and spaces or symbols"
+            title="Username must contain at least 2 unique characters and can't have spaces or symbols"
           />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
-
+          <!-- /@example\.com$/  -->
           <input
             id="email"
             name="email"
             type="email"
             placeholder="Email"
+            pattern="^(?!.*@example\.com$).*"
             title="Emails from example.com are not allowed."
           />
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
