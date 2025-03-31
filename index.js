@@ -2,13 +2,13 @@ let regForm = document.getElementById("registration");
 regForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
-//   e.preventDefault();
+  e.preventDefault();
+  let username = document.getElementById("username");
+  let usernameValue = document.getElementById("username").value;
   let passwordValue = document.getElementById("password").value;
   let passwordCheck = document.getElementById("passwordCheck");
   let passwordCheckValue = document.getElementById("passwordCheck").value;
-  let username = document.getElementById("username");
-
-  let usernameValue = document.getElementById("username").value;
+  let emailValue = document.getElementById("email").value;
 
   if (passwordValue !== passwordCheckValue) {
     alert("that don't match");
@@ -24,17 +24,17 @@ function handleSubmit(e) {
 
   let allData = [];
 
-  localStorage.setItem("password", passwordValue);
-  let storedPassword = localStorage.getItem("password");
+  const data = {
+    username: usernameValue.toLowerCase(),
+    password: passwordValue,
+    email: emailValue.toLowerCase(),
+  };
 
-  localStorage.setItem("username", usernameValue.toLowerCase());
-  let storedUsername = localStorage.getItem("username");
+  allData.push(data);
+  localStorage.setItem("data", allData);
+  let storedData = localStorage.getItem("data");
 
-  let emailValue = document.getElementById("email").value;
-  localStorage.setItem("email", emailValue.toLowerCase());
-  let storedEmail = localStorage.getItem("email");
-
-  allData.forEach((data) => {
+  storedData.forEach((data) => {
     if (data.username == usernameValue) {
       alert("that username is already taken");
       username.focus();
@@ -42,13 +42,6 @@ function handleSubmit(e) {
     }
   });
 
-  let data = {
-    username: storedUsername,
-    password: storedPassword,
-    email: storedEmail,
-  };
-  allData.push(data);
-
-  localStorage.clear();
+  //   localStorage.clear();
   alert("submit successful!");
 }
