@@ -1,21 +1,22 @@
 let regForm = document.getElementById("registration");
-let password = document.getElementById("password");
-let passwordCheck = document.getElementById("passwordCheck");
-let username = document.getElementById("username");
-let terms = document.getElementById("terms");
-let passwordValue = password.value;
-let passwordCheckValue = passwordCheck.value;
-let usernameValue = username.value;
 
 regForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
-  e.preventdefault();
-  if (passwordValue !== passwordCheckValue) {
+  e.preventDefault();
+  let password = document.getElementById("password").value;
+  let passwordCheck = document.getElementById("passwordCheck").value;
+  let username = document.getElementById("username").value;
+  //   console.log(password, passwordCheck, username);
+
+  if (password !== passwordCheck) {
+    alert("that don't match");
+    passwordCheck.focus();
     return false;
   }
 
-  if (password.includes(usernameValue)) {
+  if (password.includes(username)) {
+    password.focus();
     return false;
   }
 }
