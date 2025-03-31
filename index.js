@@ -1,7 +1,7 @@
 let regForm = document.getElementById("registration");
-regForm.addEventListener("submit", handleSubmit);
+regForm.addEventListener("submit", handleRegForm);
 
-function handleSubmit(e) {
+function handleRegForm(e) {
   e.preventDefault();
   let username = document.getElementById("username");
   let usernameValue = document.getElementById("username").value;
@@ -44,4 +44,36 @@ function handleSubmit(e) {
 
   //   localStorage.clear();
   alert("submit successful!");
+}
+
+let loginForm = document.getElementById("login");
+loginForm.addEventListener("submit", handleLoginForm);
+
+function handleLoginForm(e) {
+  e.preventDefault();
+  let loginUsername = document.getElementById("loginUsername");
+  let loginUsernameValue = document.getElementById("loginUsername").value;
+  let loginPassword = document.getElementById("loginPassword");
+  let loginPasswordValue = document.getElementById("loginPassword").value;
+  let storedData = localStorage.getItem("data");
+
+  storedData.forEach((data) => {
+    if (loginPasswordValue !== data.password) {
+      alert("wrong password");
+      loginPassword.focus();
+      return;
+    }
+    if (loginUsernameValue.includes(data.username)) {
+      return;
+    } else {
+      alert("username isn't in our system");
+      loginUsername.focus();
+      return;
+    }
+  });
+    
+    let persist = document.getElementById('persist');
+    if (persist) {
+        alert("success! we'll keep you logged in")
+    }
 }
